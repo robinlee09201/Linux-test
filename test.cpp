@@ -8,13 +8,15 @@
 void do_pthread(int num);
 void do_fork(int num);
 
+using namespace std;
+
 int main(int argc, char **argv){
     int num_fork;
     if(argc == 1){
         num_fork = DEFAULT_NUM_FORK;
     }
     else{
-        num_fork atoi(argv[1]);
+        num_fork = atoi(argv[1]);
     }
     timeit t;
     t.start();
@@ -39,13 +41,13 @@ void do_fork(int num){
     }
 }
 
-void dumb(){
-    return;
+void * dumb(void * x){
+    return NULL;
 }
 
 void do_pthread(int num){
     pthread_t threads[num];
     for(int i=0;i<num;i++){
-        pthread_create(&threads[i],NULL,dumb);
+        pthread_create(&(threads[i]),NULL,&dumb,NULL);
     }
 }

@@ -23,4 +23,4 @@ public:
     void record();
     void print_last();
     void print_all();
-}
+};
